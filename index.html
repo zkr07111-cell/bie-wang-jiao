@@ -1,230 +1,30 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#111827" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="别忘交" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="apple-touch-icon" href="icon-192.png" />
-  <title>别忘交</title>
-  <style>
-    :root{
-      --bg:#f6f7f9; --card:#fff; --text:#111827; --muted:#8a9099; --line:#eceff3;
-      --accent:#111827; --danger:#c62828; --warn:#b26a00; --ok:#16845b;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}
-    .app{max-width:720px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 14px calc(92px + env(safe-area-inset-bottom))}
-    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-    h1{font-size:24px;margin:0;letter-spacing:-.5px}
-    .count{font-size:13px;color:var(--muted);margin-top:4px}
-    .icon-btn{border:0;width:42px;height:42px;border-radius:50%;background:#111827;color:#fff;font-size:24px;line-height:1;box-shadow:0 5px 16px rgba(17,24,39,.18)}
-    .filters{display:flex;gap:8px;margin-bottom:14px;overflow-x:auto}
-    .chip{border:0;background:transparent;color:var(--muted);font-weight:700;padding:7px 10px;border-radius:999px}
-    .chip.active{background:#fff;color:var(--text);box-shadow:0 1px 5px rgba(0,0,0,.06)}
-    .task{background:var(--card);border-radius:18px;padding:15px 16px;box-shadow:0 3px 14px rgba(17,24,39,.05);margin-bottom:11px}
-    .task-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-    .task-title{font-size:17px;font-weight:800;line-height:1.35}
-    .course{font-size:13px;color:var(--muted);margin-top:3px}
-    .badge{font-size:12px;font-weight:800;border-radius:999px;padding:5px 8px;white-space:nowrap;background:#f1f4f8}
-    .danger{color:var(--danger)} .warn{color:var(--warn)} .ok{color:var(--ok)}
-    .deadline{font-size:14px;margin-top:11px;font-weight:650}
-    details{margin-top:8px}
-    summary{font-size:13px;color:var(--muted);cursor:pointer;list-style:none}
-    summary::-webkit-details-marker{display:none}
-    .more{display:grid;gap:6px;font-size:13px;margin-top:9px;color:#4b5563;line-height:1.55}
-    .more a{color:inherit}
-    .more img{max-width:100%;border-radius:12px;margin-top:3px}
-    .actions{display:flex;gap:8px;margin-top:12px}
-    .btn{border:0;border-radius:11px;padding:9px 12px;font-weight:750;background:#f3f4f6;color:#374151}
-    .btn.primary{background:#111827;color:#fff}
-    .btn.delete{margin-left:auto;background:transparent;color:#a0a5ad}
-    .empty{text-align:center;color:var(--muted);padding:70px 10px}
-    .empty .emoji{font-size:34px;margin-bottom:10px}
-    .sheet-mask{position:fixed;inset:0;background:rgba(17,24,39,.30);display:none;z-index:9}
-    .sheet-mask.show{display:block}
-    .sheet{
-      position:fixed;left:0;right:0;bottom:0;z-index:10;background:#fff;border-radius:24px 24px 0 0;
-      padding:10px 16px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto;
-      transform:translateY(105%);transition:.22s ease;box-shadow:0 -10px 40px rgba(0,0,0,.12)
-    }
-    .sheet.show{transform:translateY(0)}
-    .handle{width:42px;height:5px;border-radius:999px;background:#d9dde3;margin:3px auto 16px}
-    .sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-    .sheet-title{font-size:20px;font-weight:850}
-    .close{border:0;background:#f3f4f6;border-radius:50%;width:34px;height:34px;font-size:18px}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .full{grid-column:1/-1}
-    label{font-size:12px;color:var(--muted);display:block;margin:0 0 6px 2px}
-    input,textarea{width:100%;border:1px solid var(--line);border-radius:13px;padding:11px 12px;font:inherit;background:#fbfcfd}
-    textarea{min-height:78px;resize:vertical}
-    .save-row{display:flex;gap:8px;margin-top:14px}
-    .save-row .btn{flex:1;padding:12px}
-    @media(max-width:560px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="别忘交">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png">
+<title>别忘交</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#111827;--muted:#8a9099;--line:#e7e9ee;--danger:#c62828;--warn:#b26a00;--ok:#16845b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}.app{max-width:720px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 14px calc(90px + env(safe-area-inset-bottom))}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}h1{font-size:24px;margin:0}.count{font-size:13px;color:var(--muted);margin-top:4px}.icon-btn{border:0;width:42px;height:42px;border-radius:50%;background:#111827;color:#fff;font-size:24px}.filters{display:flex;gap:8px;margin-bottom:14px}.chip{border:0;background:transparent;color:var(--muted);font-weight:700;padding:7px 10px;border-radius:999px}.chip.active{background:#fff;color:#111827;box-shadow:0 1px 5px #0000000d}.task{background:#fff;border-radius:18px;padding:15px 16px;box-shadow:0 3px 14px #1118270d;margin-bottom:11px}.task-top{display:flex;justify-content:space-between;gap:12px}.task-title{font-size:17px;font-weight:800}.course{font-size:13px;color:var(--muted);margin-top:3px}.badge{font-size:12px;font-weight:800;border-radius:999px;padding:5px 8px;background:#f1f4f8;white-space:nowrap}.danger{color:var(--danger)}.warn{color:var(--warn)}.ok{color:var(--ok)}.deadline{font-size:14px;margin-top:11px;font-weight:650}details{margin-top:8px}summary{font-size:13px;color:var(--muted)}.more{display:grid;gap:6px;font-size:13px;margin-top:9px;color:#4b5563;line-height:1.55}.more img{max-width:100%;border-radius:12px}.actions{display:flex;gap:8px;margin-top:12px}.btn{border:0;border-radius:11px;padding:10px 12px;font-weight:750;background:#f3f4f6;color:#374151}.btn.primary{background:#111827;color:#fff}.btn.ocr{background:#eef2ff;color:#3730a3}.btn.delete{margin-left:auto;background:transparent;color:#a0a5ad}.empty{text-align:center;color:var(--muted);padding:70px 10px}.sheet-mask{position:fixed;inset:0;background:#1118274d;display:none;z-index:9}.sheet-mask.show{display:block}.sheet{position:fixed;left:0;right:0;bottom:0;z-index:10;background:#fff;border-radius:24px 24px 0 0;padding:10px 16px calc(18px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto;transform:translateY(105%);transition:.22s;box-shadow:0 -10px 40px #0002}.sheet.show{transform:translateY(0)}.handle{width:42px;height:5px;border-radius:99px;background:#d9dde3;margin:3px auto 16px}.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.sheet-title{font-size:20px;font-weight:850}.close{border:0;background:#f3f4f6;border-radius:50%;width:34px;height:34px;font-size:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.full{grid-column:1/-1}label{font-size:12px;color:var(--muted);display:block;margin:0 0 6px 2px}input,textarea{width:100%;border:1px solid var(--line);border-radius:13px;padding:11px 12px;font:inherit;background:#fbfcfd}textarea{min-height:78px}.ocrbox{border:1px dashed #c7cbd3;border-radius:14px;padding:12px;background:#fafbfc}.ocrrow{display:flex;gap:8px;align-items:center}.ocrrow input{flex:1}.ocrstatus{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}.save-row{margin-top:14px}.save-row .btn{width:100%;padding:12px}@media(max-width:560px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.ocrrow{flex-direction:column;align-items:stretch}}
+</style>
 </head>
 <body>
-<div class="app">
-  <header>
-    <div>
-      <h1>别忘交</h1>
-      <div class="count" id="countText">暂无未完成作业</div>
-    </div>
-    <button class="icon-btn" id="openForm" aria-label="添加作业">＋</button>
-  </header>
-
-  <div class="filters">
-    <button class="chip active" data-filter="todo">未完成</button>
-    <button class="chip" data-filter="all">全部</button>
-    <button class="chip" data-filter="done">已完成</button>
-  </div>
-
-  <main id="list"></main>
-</div>
-
+<div class="app"><header><div><h1>别忘交</h1><div class="count" id="countText">暂无未完成作业</div></div><button class="icon-btn" id="openForm">＋</button></header><div class="filters"><button class="chip active" data-filter="todo">未完成</button><button class="chip" data-filter="all">全部</button><button class="chip" data-filter="done">已完成</button></div><main id="list"></main></div>
 <div class="sheet-mask" id="mask"></div>
-<section class="sheet" id="sheet" aria-hidden="true">
-  <div class="handle"></div>
-  <div class="sheet-head">
-    <div class="sheet-title">添加作业</div>
-    <button class="close" id="closeForm">×</button>
-  </div>
-
-  <div class="grid">
-    <div><label>课程</label><input id="course" placeholder="宏观经济学"></div>
-    <div><label>作业</label><input id="title" placeholder="第三章习题"></div>
-    <div><label>截止时间</label><input id="deadline" type="datetime-local"></div>
-    <div><label>提交方式</label><input id="method" placeholder="学习通 / 邮件"></div>
-    <div class="full"><label>提交邮箱（可选）</label><input id="email" type="email" placeholder="teacher@example.com"></div>
-    <div class="full"><label>备注（可选）</label><textarea id="notes" placeholder="题号、字数、格式等"></textarea></div>
-    <div class="full"><label>作业截图（可选）</label><input id="image" type="file" accept="image/*"></div>
-  </div>
-
-  <div class="save-row">
-    <button class="btn primary" id="saveBtn">保存</button>
-  </div>
-</section>
-
+<section class="sheet" id="sheet"><div class="handle"></div><div class="sheet-head"><div class="sheet-title">添加作业</div><button class="close" id="closeForm">×</button></div>
+<div class="ocrbox"><label>作业截图</label><div class="ocrrow"><input id="image" type="file" accept="image/*"><button class="btn ocr" id="ocrBtn" type="button">识别并填入</button></div><div class="ocrstatus" id="ocrStatus">选择老师布置作业的截图后，可自动识别文字、邮箱、日期和提交方式。</div></div>
+<div class="grid" style="margin-top:12px"><div><label>课程</label><input id="course" placeholder="宏观经济学"></div><div><label>作业</label><input id="title" placeholder="第三章习题"></div><div><label>截止时间</label><input id="deadline" type="datetime-local"></div><div><label>提交方式</label><input id="method" placeholder="学习通 / 邮件"></div><div class="full"><label>提交邮箱（可选）</label><input id="email" type="email" placeholder="teacher@example.com"></div><div class="full"><label>备注（可选）</label><textarea id="notes" placeholder="识别到的作业要求会放在这里"></textarea></div></div><div class="save-row"><button class="btn primary" id="saveBtn">保存</button></div></section>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <script>
-const KEY='homework_keeper_v3';
-let tasks=JSON.parse(localStorage.getItem(KEY)||'[]');
-let filter='todo';
-const $=id=>document.getElementById(id);
-
-function save(){localStorage.setItem(KEY,JSON.stringify(tasks)); render();}
-function fmt(d){
-  if(!d) return '未设置截止时间';
-  const x=new Date(d);
-  return x.toLocaleString('zh-CN',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
-}
-function remain(d){
-  if(!d) return {text:'未设时间',cls:''};
-  const ms=new Date(d)-new Date();
-  const days=Math.ceil(ms/86400000);
-  if(ms<0) return {text:'已逾期',cls:'danger'};
-  if(ms<=86400000) return {text:'24小时内',cls:'danger'};
-  if(days<=3) return {text:`${days}天后`,cls:'warn'};
-  return {text:`${days}天后`,cls:'ok'};
-}
-function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function render(){
-  const todoCount=tasks.filter(x=>!x.done).length;
-  $('countText').textContent=todoCount ? `还有 ${todoCount} 项未完成` : '今天没有待交作业';
-
-  let arr=[...tasks].sort((a,b)=>(a.done-b.done)||((a.deadline||'9999')>(b.deadline||'9999')?1:-1));
-  if(filter==='todo') arr=arr.filter(x=>!x.done);
-  if(filter==='done') arr=arr.filter(x=>x.done);
-
-  const list=$('list'); list.innerHTML='';
-  if(!arr.length){
-    list.innerHTML=`<div class="empty"><div class="emoji">${filter==='done'?'✓':'📭'}</div>${filter==='done'?'还没有已完成的作业':'这里很干净，暂时没有作业'}</div>`;
-    return;
-  }
-
-  arr.forEach(t=>{
-    const r=remain(t.deadline);
-    const hasMore=t.method||t.email||t.notes||t.image;
-    const el=document.createElement('section'); el.className='task';
-    el.innerHTML=`
-      <div class="task-top">
-        <div>
-          <div class="task-title">${t.done?'✓ ':''}${esc(t.title||'未命名作业')}</div>
-          <div class="course">${esc(t.course||'未填写课程')}</div>
-        </div>
-        <div class="badge ${r.cls}">${t.done?'已完成':r.text}</div>
-      </div>
-      <div class="deadline">⏰ ${fmt(t.deadline)}</div>
-      ${hasMore?`
-      <details>
-        <summary>查看要求</summary>
-        <div class="more">
-          ${t.method?`<div>提交：${esc(t.method)}</div>`:''}
-          ${t.email?`<div>邮箱：<a href="mailto:${esc(t.email)}">${esc(t.email)}</a></div>`:''}
-          ${t.notes?`<div>${esc(t.notes).replace(/\n/g,'<br>')}</div>`:''}
-          ${t.image?`<img src="${t.image}" alt="作业截图">`:''}
-        </div>
-      </details>`:''}
-      <div class="actions">
-        <button class="btn" onclick="toggleDone('${t.id}')">${t.done?'恢复':'完成'}</button>
-        <button class="btn delete" onclick="removeTask('${t.id}')">删除</button>
-      </div>`;
-    list.appendChild(el);
-  });
-}
-
-function openSheet(){
-  $('mask').classList.add('show');
-  $('sheet').classList.add('show');
-  $('sheet').setAttribute('aria-hidden','false');
-}
-function closeSheet(){
-  $('mask').classList.remove('show');
-  $('sheet').classList.remove('show');
-  $('sheet').setAttribute('aria-hidden','true');
-}
-$('openForm').onclick=openSheet;
-$('closeForm').onclick=closeSheet;
-$('mask').onclick=closeSheet;
-
-window.toggleDone=id=>{const t=tasks.find(x=>x.id===id); if(t){t.done=!t.done;save();}}
-window.removeTask=id=>{if(confirm('删除这项作业？')){tasks=tasks.filter(x=>x.id!==id);save();}}
-
-$('saveBtn').onclick=async()=>{
-  const file=$('image').files[0];
-  let image='';
-  if(file){
-    image=await new Promise(res=>{const fr=new FileReader();fr.onload=()=>res(fr.result);fr.readAsDataURL(file);});
-  }
-  const t={
-    id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),
-    course:$('course').value.trim(),
-    title:$('title').value.trim(),
-    deadline:$('deadline').value,
-    method:$('method').value.trim(),
-    email:$('email').value.trim(),
-    notes:$('notes').value.trim(),
-    image, done:false
-  };
-  if(!t.title&&!t.course){alert('至少填写课程或作业名称');return;}
-  tasks.push(t); save();
-  ['course','title','deadline','method','email','notes'].forEach(id=>$(id).value='');
-  $('image').value='';
-  closeSheet();
-};
-
-document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{
-  filter=b.dataset.filter;
-  document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));
-  render();
-});
-
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-}
-render();
-</script>
-</body>
-</html>
+const KEY='homework_keeper_v3';let tasks=JSON.parse(localStorage.getItem(KEY)||'[]'),filter='todo';const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(KEY,JSON.stringify(tasks));render()}function fmt(d){if(!d)return'未设置截止时间';return new Date(d).toLocaleString('zh-CN',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}function remain(d){if(!d)return{text:'未设时间',cls:''};const ms=new Date(d)-new Date(),days=Math.ceil(ms/86400000);if(ms<0)return{text:'已逾期',cls:'danger'};if(ms<=86400000)return{text:'24小时内',cls:'danger'};if(days<=3)return{text:`${days}天后`,cls:'warn'};return{text:`${days}天后`,cls:'ok'}}function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function render(){const n=tasks.filter(x=>!x.done).length;$('countText').textContent=n?`还有 ${n} 项未完成`:'今天没有待交作业';let arr=[...tasks].sort((a,b)=>(a.done-b.done)||((a.deadline||'9999')>(b.deadline||'9999')?1:-1));if(filter==='todo')arr=arr.filter(x=>!x.done);if(filter==='done')arr=arr.filter(x=>x.done);const list=$('list');list.innerHTML='';if(!arr.length){list.innerHTML='<div class="empty">📭<br><br>这里很干净，暂时没有作业</div>';return}arr.forEach(t=>{const r=remain(t.deadline),has=t.method||t.email||t.notes||t.image,el=document.createElement('section');el.className='task';el.innerHTML=`<div class="task-top"><div><div class="task-title">${t.done?'✓ ':''}${esc(t.title||'未命名作业')}</div><div class="course">${esc(t.course||'未填写课程')}</div></div><div class="badge ${r.cls}">${t.done?'已完成':r.text}</div></div><div class="deadline">⏰ ${fmt(t.deadline)}</div>${has?`<details><summary>查看要求</summary><div class="more">${t.method?`<div>提交：${esc(t.method)}</div>`:''}${t.email?`<div>邮箱：<a href="mailto:${esc(t.email)}">${esc(t.email)}</a></div>`:''}${t.notes?`<div>${esc(t.notes).replace(/\n/g,'<br>')}</div>`:''}${t.image?`<img src="${t.image}">`:''}</div></details>`:''}<div class="actions"><button class="btn" onclick="toggleDone('${t.id}')">${t.done?'恢复':'完成'}</button><button class="btn delete" onclick="removeTask('${t.id}')">删除</button></div>`;list.appendChild(el)})}
+function openSheet(){$('mask').classList.add('show');$('sheet').classList.add('show')}function closeSheet(){$('mask').classList.remove('show');$('sheet').classList.remove('show')}$('openForm').onclick=openSheet;$('closeForm').onclick=closeSheet;$('mask').onclick=closeSheet;window.toggleDone=id=>{const t=tasks.find(x=>x.id===id);if(t){t.done=!t.done;save()}};window.removeTask=id=>{if(confirm('删除这项作业？')){tasks=tasks.filter(x=>x.id!==id);save()}};
+function toLocalInput(d){const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`}
+function parseDeadline(text){const now=new Date();let m=text.match(/(20\d{2})[年\/\-.](\d{1,2})[月\/\-.](\d{1,2})[日号]?\s*(?:(\d{1,2})[:：时](\d{1,2})?)?/);if(m){const d=new Date(+m[1],+m[2]-1,+m[3],m[4]?+m[4]:23,m[5]?+m[5]:59);return toLocalInput(d)}m=text.match(/(\d{1,2})月(\d{1,2})[日号]?\s*(?:(\d{1,2})[:：时](\d{1,2})?)?/);if(m){let y=now.getFullYear(),d=new Date(y,+m[1]-1,+m[2],m[3]?+m[3]:23,m[4]?+m[4]:59);if(d<now&&d-now<-86400000*60)d.setFullYear(y+1);return toLocalInput(d)}m=text.match(/(\d{1,2})[\/.-](\d{1,2})\s*(?:(\d{1,2})[:：](\d{1,2}))?/);if(m){return toLocalInput(new Date(now.getFullYear(),+m[1]-1,+m[2],m[3]?+m[3]:23,m[4]?+m[4]:59))}if(/明天/.test(text)){const d=new Date(now);d.setDate(d.getDate()+1);d.setHours(23,59,0,0);return toLocalInput(d)}if(/后天/.test(text)){const d=new Date(now);d.setDate(d.getDate()+2);d.setHours(23,59,0,0);return toLocalInput(d)}return''}
+function autoFill(text){const lines=text.split(/\n+/).map(x=>x.trim()).filter(Boolean);const email=text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);if(email)$('email').value=email[0];const dl=parseDeadline(text);if(dl)$('deadline').value=dl;const methods=['学习通','雨课堂','智慧树','邮箱','邮件','纸质版','纸质','课堂提交','在线提交'];const found=methods.find(x=>text.includes(x));if(found)$('method').value=found.includes('邮箱')||found==='邮件'?'邮件':found;const c=lines.find(x=>/课程|科目|课堂/.test(x)&&x.length<30);if(c)$('course').value=c.replace(/^(课程|科目|课堂)[:：\s]*/,'').slice(0,30);const t=lines.find(x=>/作业|任务|习题|论文|报告|实验/.test(x)&&x.length<50);if(t)$('title').value=t.replace(/^(作业|任务)[:：\s]*/,'').slice(0,50);$('notes').value=text.trim()}
+$('ocrBtn').onclick=async()=>{const file=$('image').files[0];if(!file){alert('请先选择一张截图');return}const btn=$('ocrBtn'),status=$('ocrStatus');btn.disabled=true;btn.textContent='识别中…';try{const result=await Tesseract.recognize(file,'chi_sim+eng',{logger:m=>{if(m.status==='recognizing text')status.textContent=`正在识别文字 ${Math.round((m.progress||0)*100)}%`}});const text=result.data.text||'';if(!text.trim())throw new Error('未识别到文字');autoFill(text);status.textContent='识别完成。已自动填写可确定的信息，请核对后保存。'}catch(e){status.textContent='识别失败，请换一张更清晰的截图后重试。'}finally{btn.disabled=false;btn.textContent='识别并填入'}};
+$('saveBtn').onclick=async()=>{const file=$('image').files[0];let image='';if(file)image=await new Promise(res=>{const fr=new FileReader();fr.onload=()=>res(fr.result);fr.readAsDataURL(file)});const t={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),course:$('course').value.trim(),title:$('title').value.trim(),deadline:$('deadline').value,method:$('method').value.trim(),email:$('email').value.trim(),notes:$('notes').value.trim(),image,done:false};if(!t.title&&!t.course){alert('至少填写课程或作业名称');return}tasks.push(t);save();['course','title','deadline','method','email','notes'].forEach(id=>$(id).value='');$('image').value='';$('ocrStatus').textContent='选择老师布置作业的截图后，可自动识别文字、邮箱、日期和提交方式。';closeSheet()};document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()});if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));render();
+</script></body></html>
