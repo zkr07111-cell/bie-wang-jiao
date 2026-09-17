@@ -1,0 +1,6 @@
+name = "bie-wang-jiao-ai"
+main = "src/index.js"
+compatibility_date = "2026-09-17"
+
+[ai]
+binding = "AI"
